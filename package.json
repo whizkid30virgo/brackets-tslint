@@ -1,0 +1,28 @@
+{
+  "name": "brackets-tslint",
+  "version": "0.1.0",
+  "description": "TSlint support for Brackets",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/fdecampredon/brackets-tslint"
+  },
+  "keywords": [
+    "typescript",
+    "brackets",
+    "tslint",
+    "lint"
+  ],
+  "author": "François de Campredon <francois.de.campredon@gmail.com> (https://github.com/fdecampredon)",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/fdecampredon/brackets-tslint/issues"
+  },
+  "homepage": "https://github.com/fdecampredon/brackets-tslint",
+  "dependencies": {
+    "tslint": "~0.4.8"
+  }
+}
