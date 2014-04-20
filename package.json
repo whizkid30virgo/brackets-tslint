@@ -1,6 +1,6 @@
 {
   "name": "fdecampredon.brackets-tslint",
-  "title": "brackets-tslint",
+  "title": "Brackets TSLint",
   "description": "TSlint support for Brackets",
   "homepage": "https://github.com/fdecampredon/brackets-tslint",
   "author": "François de Campredon <francois.de.campredon@gmail.com> (https://github.com/fdecampredon)",
@@ -22,7 +22,6 @@
   "bugs": {
     "url": "https://github.com/fdecampredon/brackets-tslint/issues"
   },
-  "homepage": "https://github.com/fdecampredon/brackets-tslint",
   "dependencies": {
     "tslint": "~0.4.8"
   }
