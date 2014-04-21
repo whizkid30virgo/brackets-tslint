@@ -74,8 +74,20 @@ define(function (require, exports, module) {
                             handleFailure(e);
                             return;
                         }
+                        
+                        failures = failures || [];
+                        
+                        failures.sort(function (failure1, failure2) {
+                            var failure1Position = (failure1 && failure1.startPosition) ? 
+                                failure1.startPosition.position : 
+                                0;
+                            var failure2Position = (failure2 && failure2.startPosition) ? 
+                                failure2.startPosition.position : 
+                                0;
+                            return failure1Position - failure2Position;
+                        });
 
-                        failures = failures ? failures.slice(0, 50) : [];
+                        failures = failures.slice(0, 50);
                         deferred.resolve({
                             aborted: result.failureCount > 50,
                             errors : failures.map(function (failure) {
