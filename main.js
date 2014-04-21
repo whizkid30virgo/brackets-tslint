@@ -19,6 +19,7 @@ define(function (require, exports, module) {
     tslintPreferences.definePreference('enabled', 'boolean', true);
     tslintPreferences.definePreference('config', 'string', null);
     tslintPreferences.definePreference('rulesDirectory', 'string', null);
+    tslintPreferences.definePreference('maxDisplayError', 'number', 50);
 
     function getConfigFile() {
         var configFile = tslintPreferences.get('config') || 'tslint.json',
@@ -87,7 +88,7 @@ define(function (require, exports, module) {
                             return failure1Position - failure2Position;
                         });
 
-                        failures = failures.slice(0, 50);
+                        failures = failures.slice(0, tslintPreferences.get('maxDisplayError'));
                         deferred.resolve({
                             aborted: result.failureCount > 50,
                             errors : failures.map(function (failure) {
