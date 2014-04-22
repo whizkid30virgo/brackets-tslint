@@ -4,7 +4,7 @@
   "description": "TSlint support for Brackets",
   "homepage": "https://github.com/fdecampredon/brackets-tslint",
   "author": "François de Campredon <francois.de.campredon@gmail.com> (https://github.com/fdecampredon)",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Apache 2.0",
   "keywords": [
     "typescript",
