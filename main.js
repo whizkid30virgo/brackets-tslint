@@ -55,17 +55,22 @@ define(function (require, exports, module) {
                 if (e) {
                     console.error('Error during tslint linting: ' + e);
                 }
-                deferred.resolve({
-                    aborted: !!e,
-                    errors: []
-                });
+                deferred.resolve(null);
             }
+            
             if (tslintPreferences.get('enabled') === false) {
                 handleFailure();
             }
             else {
                 getConfigFile().then(function (config) {
 
+                    try {
+                        JSON.parse(config);
+                    } catch(e) {
+                        deferred.reject('Invalid JSON in config file');
+                    }
+                    
+                    
                     tslintDomain.exec("scanFile", path, content, config, rulesDirectory).done(function (result) {
                         var failures;
                         try {
@@ -76,7 +81,9 @@ define(function (require, exports, module) {
                             return;
                         }
                         
-                        failures = failures || [];
+                        if (!failures || failures.length === 0) {
+                            handleFailure();
+                        }
                         
                         failures.sort(function (failure1, failure2) {
                             var failure1Position = (failure1 && failure1.startPosition) ? 
@@ -108,7 +115,14 @@ define(function (require, exports, module) {
                         });
                     }).fail(handleFailure);
                 }).fail(function () {
-                    deferred.reject('Could not find tslint configuration file');
+                    var configFile = tslintPreferences.get('config'),
+                        projectRootEntry = ProjectManager.getProjectRoot();
+                    if (configFile) {
+                        deferred.reject('Could not find tslint configuration file at \'' + 
+                                        projectRootEntry + configFile + '\'');
+                    } else {
+                        handleFailure();
+                    }
                 });
             }
 
