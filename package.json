@@ -13,7 +13,7 @@
     "lint"
   ],
   "engines": {
-     "brackets": ">=0.38.0"
+    "brackets": ">=0.38.0"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,6 @@
     "url": "https://github.com/fdecampredon/brackets-tslint/issues"
   },
   "dependencies": {
-    "tslint": "~0.4.8"
+    "tslint": "~0.4.10"
   }
 }
